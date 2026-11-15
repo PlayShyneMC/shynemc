@@ -192,7 +192,7 @@
             z-index: 1;
         }
 
-        /* TITOLO PRINCIPALE IN ALTO */
+        /* TITOLO E SOTTOTITOLO IN CIMA */
         h1 {
             font-size: 3.8em;
             margin: 10px 0 5px 0;
@@ -208,10 +208,10 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
         }
 
-        /* IMMAGINE / BANNER SPOSTATO SOPRA LA CARD IP */
+        /* IMMAGINE / BANNER SOPRA LA CARD IP */
         .hero-banner-wrapper {
             position: relative;
-            max-width: 380px; /* Compatta ed elegante */
+            max-width: 380px;
             margin: 0 auto 25px auto;
             border-radius: 16px;
             padding: 3px;
@@ -240,7 +240,7 @@
             50% { transform: translateY(-6px); }
         }
 
-        /* Box IP, Porta, Discord e Stato */
+        /* Box IP, Porta, Discord, Store e Stato */
         .ip-card {
             background-color: rgba(18, 10, 26, 0.85);
             backdrop-filter: blur(20px);
@@ -318,6 +318,15 @@
             box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
         }
 
+        /* Pulsanti Community & Store Container */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
         /* Pulsante Discord */
         .btn-discord {
             display: inline-block;
@@ -330,13 +339,42 @@
             border-radius: 8px;
             transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
             box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-            margin-top: 10px;
         }
         .btn-discord:hover {
             background-color: #4752c4;
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
         }
+
+        /* Pulsante Store (Non ancora disponibile) */
+        .btn-store-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn-store {
+            display: inline-block;
+            background-color: #3b2a4a;
+            color: #9e9e9e;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 1px solid #5a3d75;
+            cursor: not-allowed;
+            opacity: 0.75;
+            box-sizing: border-box;
+        }
+        .store-notice {
+            font-size: 0.78em;
+            color: #ff9800;
+            margin-top: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .status-badge, .compat-badge {
             color: #000;
             font-weight: bold;
@@ -410,7 +448,9 @@
             .ip-text, .port-text { font-size: 1.1em; }
             .ip-box-container, .port-box-container { width: 100%; flex-direction: column; }
             .btn-copy, .btn-copy-port { width: 100%; }
-            .btn-discord { width: 100%; box-sizing: border-box; }
+            .buttons-container { flex-direction: column; }
+            .btn-discord, .btn-store-wrapper { width: 100%; }
+            .btn-store { width: 100%; }
             .status-badge, .compat-badge { display: block; margin: 5px auto; width: fit-content; }
         }
     </style>
@@ -446,7 +486,7 @@
         <h1>ShyneMC</h1>
         <p class="subtitle">Nessuna attesa, nessun limite. Entra nel mondo di gioco definitivo creato su misura per la nostra community.</p>
 
-        <!-- IMMAGINE SPOSTATA QUI (SOPRA IL BOX IP) -->
+        <!-- IMMAGINE BANNER -->
         <div class="hero-banner-wrapper" id="banner-box">
             <img src="banner.jpg" alt="ShyneMC" class="hero-banner-img" 
                  onerror="document.getElementById('banner-box').style.display='none';">
@@ -472,8 +512,17 @@
             </div>
             
             <div style="margin-top: 25px;">
-                <p style="margin: 0 0 10px 0; color:#aaa;">💬 Unisciti alla nostra community:</p>
-                <a href="https://discord.gg/XyT6nWCBJ" target="_blank" class="btn-discord">Entra nel Discord Ufficiale</a>
+                <p style="margin: 0 0 10px 0; color:#aaa;">💬 Unisciti alla nostra community e store:</p>
+                
+                <!-- PULSANTI DISCORD E STORE -->
+                <div class="buttons-container">
+                    <a href="https://discord.gg/MUVEzHm5D" target="_blank" class="btn-discord">Entra nel Discord Ufficiale</a>
+                    
+                    <div class="btn-store-wrapper">
+                        <span class="btn-store" data-url="https://shynemc-store.tebex.store" title="Non ancora disponibile">🛒 Shop Ufficiale</span>
+                        <span class="store-notice">⚠️ Non ancora disponibile</span>
+                    </div>
+                </div>
             </div>
         </div>
 
