@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShyneMC - Sito Ufficiale</title>
+    <style>
+        /* Stile di Base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #05020a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* SFONDO A TEMA MINECRAFT: CUBI, PORTALI E CRISTALLI VIOLA FLUTTUANTI */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #150926 0%, #05020a 100%);
+            overflow: hidden;
+            pointer-events: none;
+        }
+        /* Elementi Minecraft Fluttuanti in CSS (Cubi/Cristalli Viola) */
+        .mc-element {
+            position: absolute;
+            background: rgba(156, 39, 176, 0.15);
+            border: 2px solid rgba(224, 64, 251, 0.4);
+            box-shadow: 0 0 15px rgba(123, 31, 162, 0.5), inset 0 0 10px rgba(224, 64, 251, 0.3);
+            animation: floatMcBlock linear infinite;
+        }
+        /* Stile cubico pixelato per alcuni elementi */
+        .mc-block {
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            box-shadow: inset 4px 4px 0px rgba(224, 64, 251, 0.4), 
+                        inset -4px -4px 0px rgba(38, 0, 77, 0.8),
+                        0 0 20px rgba(156, 39, 176, 0.6);
+        }
+        /* Cristalli/Ametiste a rombo */
+        .mc-crystal {
+            width: 30px;
+            height: 50px;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 20% 100%, 0% 30%);
+            background: linear-gradient(to bottom, #ea80fc, #8e24aa);
+            box-shadow: 0 0 20px #e040fb;
+        }
+        /* Portali dimensionali circolari fluttuanti */
+        .mc-portal {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ab47bc 0%, #4a148c 60%, transparent 100%);
+            border: 2px dashed #ffeb3b;
+            box-shadow: 0 0 25px #9c27b0;
+        }
+        /* Posizionamenti e tempistiche casuali per ogni elemento sullo sfondo */
+        .el-1 { top: 10%; left: 5%; animation-duration: 22s; animation-delay: 0s; transform: rotate(15deg); }
+        .el-2 { top: 75%; left: 10%; animation-duration: 28s; animation-delay: 3s; transform: rotate(-30deg); }
+        .el-3 { top: 20%; left: 85%; animation-duration: 25s; animation-delay: 1s; transform: rotate(45deg); }
+        .el-4 { top: 65%; left: 90%; animation-duration: 32s; animation-delay: 5s; transform: rotate(10deg); }
+        .el-5 { top: 40%; left: 50%; animation-duration: 20s; animation-delay: 2s; transform: rotate(-15deg); }
+        .el-6 { top: 85%; left: 40%; animation-duration: 26s; animation-delay: 4s; transform: rotate(60deg); }
+        .el-7 { top: 5%; left: 45%; animation-duration: 30s; animation-delay: 1.5s; transform: rotate(-45deg); }
+        @keyframes floatMcBlock {
+            0% {
+                transform: translateY(110vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        /* STRUTTURA CONTENUTI OTTIMIZZATA */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 4em;
+            margin: 20px 0 10px 0;
+            color: #ffffff;
+            text-shadow: 0 0 25px rgba(224, 64, 251, 0.8), 0 4px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            font-size: 1.3em;
+            color: #d1c4e9;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+        /* Box IP, Porta, Discord e Stato */
+        .ip-card {
+            background-color: rgba(18, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(224, 64, 251, 0.4);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(74, 20, 140, 0.6);
+            box-sizing: border-box;
+        }
+        .ip-box-container, .port-box-container {
+            background-color: #030007;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px dashed #ffeb3b;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .port-box-container {
+            border-color: #00bcd4;
+        }
+        .ip-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #ffeb3b;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+        .port-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #00bcd4;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+        .btn-copy {
+            background-color: #9c27b0;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .btn-copy:hover { 
+            background-color: #ab47bc; 
+            transform: scale(1.05); 
+            box-shadow: 0 0 15px rgba(224, 64, 251, 0.6);
+        }
+        .btn-copy-port {
+            background-color: #00838f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .btn-copy-port:hover { 
+            background-color: #00acc1; 
+            transform: scale(1.05); 
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+        }
+        /* Pulsante Discord Rimodellato */
+        .btn-discord {
+            display: inline-block;
+            background-color: #5865F2;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+            margin-top: 10px;
+        }
+        .btn-discord:hover {
+            background-color: #4752c4;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
+        }
+        .status-badge, .compat-badge {
+            color: #000;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .status-badge { background-color: #ff9800; }
+        .compat-badge { background-color: #00bcd4; margin-left: 5px; }
+        /* GRIGLIA MODALITÀ */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        .modalita-card {
+            background-color: rgba(18, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid #9c27b0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .modalita-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 30px rgba(156, 39, 176, 0.4);
+        }
+        .modalita-card h3 { margin-top: 0; font-size: 1.4em; }
+        .pvp-title { border-top-color: #f44336; }
+        .pvp-title h3 { color: #f44336; }
+        .sky-title { border-top-color: #00bcd4; }
+        .sky-title h3 { color: #00bcd4; }
+        .smp-title { border-top-color: #ff9800; }
+        .smp-title h3 { color: #ff9800; }
+        /* Regole */
+        .rules-card {
+            background-color: rgba(18, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 6px solid #ffeb3b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            text-align: left;
+            margin-top: 40px;
+        }
+        .rules-card h2 { margin-top: 0; color: #ffeb3b; }
+        ul { padding-left: 20px; line-height: 1.8; }
+        ul li strong { color: #ffffff; }
+        /* REGOLE DI ADATTAMENTO SCHERMI */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5em; }
+            .subtitle { font-size: 1.1em; }
+            .grid { grid-template-columns: 1fr; }
+            .ip-text, .port-text { font-size: 1.1em; }
+            .ip-box-container, .port-box-container { width: 100%; flex-direction: column; }
+            .btn-copy, .btn-copy-port { width: 100%; }
+            .btn-discord { width: 100%; box-sizing: border-box; }
+            .status-badge, .compat-badge { display: block; margin: 5px auto; width: fit-content; }
+        }
+    </style>
+</head>
+<body>
+    <!-- SFONDO A ELEMENTI MINECRAFT VIOLA -->
+    <div class="bg-particles">
+        <div class="mc-element mc-block el-1"></div>
+        <div class="mc-element mc-crystal el-2"></div>
+        <div class="mc-element mc-portal el-3"></div>
+        <div class="mc-element mc-block el-4"></div>
+        <div class="mc-element mc-crystal el-5"></div>
+        <div class="mc-element mc-portal el-6"></div>
+        <div class="mc-element mc-block el-7"></div>
+    </div>
+    <div class="container">
+        
+        <h1>ShyneMC</h1>
+        <p class="subtitle">Nessuna attesa, nessun limite. Entra nel mondo di gioco definitivo creato su misura per la nostra community.</p>
+        <div class="ip-card">
+            <div>
+                <div class="status-badge">⚡ APERTO H24</div>
+                <div class="compat-badge">🎮 JAVA & BEDROCK (1.21.11)</div>
+            </div>
+            
+            <p style="margin: 15px 0 0 0; color:#aaa;">IP del Server:</p>
+            <div class="ip-box-container">
+                <span class="ip-text" id="server-ip">shynemc.minecraft.pro</span>
+                <button class="btn-copy" onclick="copyIp()">Copia IP</button>
+            </div>
+
+            <p style="margin: 10px 0 0 0; color:#aaa;">Porta del Server:</p>
+            <div class="port-box-container">
+                <span class="port-text" id="server-port">6105</span>
+                <button class="btn-copy-port" onclick="copyPort()">Copia Porta</button>
+            </div>
+            
+            <div style="margin-top: 25px;">
+                <p style="margin: 0 0 10px 0; color:#aaa;">💬 Unisciti alla nostra community:</p>
+                <a href="https://discord.gg/XyT6nWCBJ" target="_blank" class="btn-discord">Entra nel Discord Ufficiale</a>
+            </div>
+        </div>
+        <!-- GRIGLIA MODALITÀ -->
+        <div class="grid">
+            <div class="modalita-card pvp-title">
+                <h3>BoxPvP</h3>
+                <p>Scendi nell'arena per combattimenti ravvicinati all'ultimo sangue. Potenzia i tuoi kit, domina i settori e scala la classifica dei migliori guerrieri.</p>
+            </div>
+            <div class="modalita-card sky-title">
+                <h3>SkyBlock</h3>
+                <p>Crea la tua isola fluttuante partendo da zero. Espandi le tue risorse, automatizza le farm e diventa l'economia più ricca del server.</p>
+            </div>
+            <div class="modalita-card smp-title">
+                <h3>Survival SMP</h3>
+                <p>Esplora un mondo persistente insieme agli altri membri della community. Costruisci liberamente, stringi alleanze e affronta la natura.</p>
+            </div>
+        </div>
+        <!-- REGOLE DI GIOCO -->
+        <div class="rules-card">
+            <h2>Regolamento Principale</h2>
+            <ul>
+                <li><strong>Rispetto Reciproco:</strong> Vietati insulti, tossicità e discriminazioni di ogni tipo in chat.</li>
+                <li><strong>Fair Play:</strong> È severamente proibito l'uso di hack, client modificati o exploit del gioco.</li>
+                <li><strong>Griefing controllato:</strong> Consulta le regole specifiche di ogni modalità prima di attaccare le basi altrui.</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function copyIp() {
+            const ipText = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ipText).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                const originalText = btn.innerText;
+                btn.innerText = 'Copiato!';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Errore durante la copia dell\'IP: ', err);
+            });
+        }
+        function copyPort() {
+            const portText = document.getElementById('server-port').innerText;
+            navigator.clipboard.writeText(portText).then(() => {
+                const btn = document.querySelector('.btn-copy-port');
+                const originalText = btn.innerText;
+                btn.innerText = 'Copiato!';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Errore durante la copia della porta: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
