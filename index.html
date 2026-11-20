@@ -91,32 +91,9 @@
             animation: pulseNebula 7s ease-in-out infinite alternate;
         }
 
-        .glow-1 {
-            width: 480px;
-            height: 480px;
-            background: #8e24aa;
-            top: -80px;
-            left: 10%;
-        }
-
-        .glow-2 {
-            width: 520px;
-            height: 520px;
-            background: #4a148c;
-            bottom: -120px;
-            right: 8%;
-            animation-delay: 2.5s;
-        }
-
-        .glow-3 {
-            width: 350px;
-            height: 350px;
-            background: #00bcd4;
-            top: 40%;
-            right: 20%;
-            opacity: 0.22;
-            animation-duration: 9s;
-        }
+        .glow-1 { width: 480px; height: 480px; background: #8e24aa; top: -80px; left: 10%; }
+        .glow-2 { width: 520px; height: 520px; background: #4a148c; bottom: -120px; right: 8%; animation-delay: 2.5s; }
+        .glow-3 { width: 350px; height: 350px; background: #00bcd4; top: 40%; right: 20%; opacity: 0.22; animation-duration: 9s; }
 
         @keyframes pulseNebula {
             0% { transform: scale(0.95) translate(0, 0); opacity: 0.35; }
@@ -168,17 +145,11 @@
         .p12 { width: 5px; height: 5px; left: 96%; animation-duration: 11.5s; animation-delay: 1.2s; }
 
         @keyframes riseWave {
-            0% {
-                transform: translateY(105vh) translateX(0px) rotate(0deg) scale(0.6);
-                opacity: 0;
-            }
+            0% { transform: translateY(105vh) translateX(0px) rotate(0deg) scale(0.6); opacity: 0; }
             20% { opacity: 1; }
             50% { transform: translateY(45vh) translateX(25px) rotate(180deg) scale(1.2); }
             80% { opacity: 1; }
-            100% {
-                transform: translateY(-10vh) translateX(-20px) rotate(360deg) scale(0.8);
-                opacity: 0;
-            }
+            100% { transform: translateY(-10vh) translateX(-20px) rotate(360deg) scale(0.8); opacity: 0; }
         }
 
         /* STRUTTURA CONTENUTI */
@@ -252,6 +223,7 @@
             box-shadow: 0 10px 40px rgba(74, 20, 140, 0.65);
             box-sizing: border-box;
         }
+
         .ip-box-container, .port-box-container {
             background-color: #030007;
             padding: 15px 20px;
@@ -266,9 +238,11 @@
             max-width: 100%;
             box-sizing: border-box;
         }
+
         .port-box-container {
             border-color: #00bcd4;
         }
+
         .ip-text {
             font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
@@ -277,309 +251,10 @@
             letter-spacing: 1px;
             word-break: break-all;
         }
+
         .port-text {
             font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
             font-size: 1.5em;
             color: #00bcd4;
             letter-spacing: 1px;
-            word-break: break-all;
-        }
-        .btn-copy {
-            background-color: #9c27b0;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            white-space: nowrap;
-        }
-        .btn-copy:hover { 
-            background-color: #ab47bc; 
-            transform: scale(1.05); 
-            box-shadow: 0 0 15px rgba(224, 64, 251, 0.6);
-        }
-        .btn-copy-port {
-            background-color: #00838f;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            white-space: nowrap;
-        }
-        .btn-copy-port:hover { 
-            background-color: #00acc1; 
-            transform: scale(1.05); 
-            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
-        }
-
-        /* Pulsanti Community & Store Container */
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        /* Pulsante Discord */
-        .btn-discord {
-            display: inline-block;
-            background-color: #5865F2;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-size: 1.1em;
-            border-radius: 8px;
-            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-        }
-        .btn-discord:hover {
-            background-color: #4752c4;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
-        }
-
-        /* Pulsante Store (Non ancora disponibile) */
-        .btn-store-wrapper {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .btn-store {
-            display: inline-block;
-            background-color: #3b2a4a;
-            color: #9e9e9e;
-            text-decoration: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-size: 1.1em;
-            border-radius: 8px;
-            border: 1px solid #5a3d75;
-            cursor: not-allowed;
-            opacity: 0.75;
-            box-sizing: border-box;
-        }
-        .store-notice {
-            font-size: 0.78em;
-            color: #ff9800;
-            margin-top: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-badge, .compat-badge {
-            color: #000;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: inline-block;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .status-badge { background-color: #ff9800; }
-        .compat-badge { background-color: #00bcd4; margin-left: 5px; }
-
-        /* GRIGLIA MODALITÀ */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin: 40px 0;
-            text-align: left;
-        }
-        .modalita-card {
-            background-color: rgba(18, 10, 26, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 25px;
-            border-radius: 12px;
-            border-top: 4px solid #9c27b0;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-        .modalita-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 12px 30px rgba(156, 39, 176, 0.45);
-        }
-        .modalita-card h3 { margin-top: 0; font-size: 1.4em; }
-        .pvp-title { border-top-color: #f44336; }
-        .pvp-title h3 { color: #f44336; }
-        .sky-title { border-top-color: #00bcd4; }
-        .sky-title h3 { color: #00bcd4; }
-        .smp-title { border-top-color: #ff9800; }
-        .smp-title h3 { color: #ff9800; }
-
-        /* Regole */
-        .rules-card {
-            background-color: rgba(18, 10, 26, 0.85);
-            backdrop-filter: blur(20px);
-            padding: 30px;
-            border-radius: 16px;
-            border-left: 6px solid #ffeb3b;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-            text-align: left;
-            margin-top: 40px;
-        }
-        .rules-card h2 { margin-top: 0; color: #ffeb3b; }
-        ul { padding-left: 20px; line-height: 1.8; }
-        ul li strong { color: #ffffff; }
-
-        /* REGOLE DI ADATTAMENTO SCHERMI */
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5em; }
-            .hero-banner-wrapper { max-width: 90%; }
-            .subtitle { font-size: 1.05em; }
-            .grid { grid-template-columns: 1fr; }
-            .ip-text, .port-text { font-size: 1.1em; }
-            .ip-box-container, .port-box-container { width: 100%; flex-direction: column; }
-            .btn-copy, .btn-copy-port { width: 100%; }
-            .buttons-container { flex-direction: column; }
-            .btn-discord, .btn-store-wrapper { width: 100%; }
-            .btn-store { width: 100%; }
-            .status-badge, .compat-badge { display: block; margin: 5px auto; width: fit-content; }
-        }
-    </style>
-</head>
-<body>
-    <!-- SFONDO SUPER ANIMATO -->
-    <div class="bg-dimension">
-        <div class="bg-grid"></div>
-        <div class="portal-ring ring-1"></div>
-        <div class="portal-ring ring-2"></div>
-        <div class="nebula-glow glow-1"></div>
-        <div class="nebula-glow glow-2"></div>
-        <div class="nebula-glow glow-3"></div>
-        <div class="shooting-star s1"></div>
-        <div class="shooting-star s2"></div>
-        <div class="shooting-star s3"></div>
-        <div class="ender-particle p1"></div>
-        <div class="ender-particle p2"></div>
-        <div class="ender-particle p3"></div>
-        <div class="ender-particle p4"></div>
-        <div class="ender-particle p5"></div>
-        <div class="ender-particle p6"></div>
-        <div class="ender-particle p7"></div>
-        <div class="ender-particle p8"></div>
-        <div class="ender-particle p9"></div>
-        <div class="ender-particle p10"></div>
-        <div class="ender-particle p11"></div>
-        <div class="ender-particle p12"></div>
-    </div>
-
-    <div class="container">
-        <!-- TITOLO E SOTTOTITOLO IN CIMA -->
-        <h1>ShyneMC</h1>
-        <p class="subtitle">Nessuna attesa, nessun limite. Entra nel mondo di gioco definitivo creato su misura per la nostra community.</p>
-
-        <!-- IMMAGINE BANNER -->
-        <div class="hero-banner-wrapper" id="banner-box">
-            <img src="banner.jpg" alt="ShyneMC" class="hero-banner-img" 
-                 onerror="document.getElementById('banner-box').style.display='none';">
-        </div>
-
-        <!-- CARD IP DEL SERVER -->
-        <div class="ip-card">
-            <div>
-                <div class="status-badge">⚡ APERTO H24</div>
-                <div class="compat-badge">🎮 JAVA & BEDROCK (26.3)</div>
-            </div>
-            
-            <p style="margin: 15px 0 0 0; color:#aaa;">IP del Server:</p>
-            <div class="ip-box-container">
-                <span class="ip-text" id="server-ip">shynemc.minecraft.pro</span>
-                <button class="btn-copy" onclick="copyIp()">Copia IP</button>
-            </div>
-
-            <p style="margin: 10px 0 0 0; color:#aaa;">Porta del Server:</p>
-            <div class="port-box-container">
-                <span class="port-text" id="server-port">6105</span>
-                <button class="btn-copy-port" onclick="copyPort()">Copia Porta</button>
-            </div>
-            
-            <div style="margin-top: 25px;">
-                <p style="margin: 0 0 10px 0; color:#aaa;">💬 Unisciti alla nostra community e store:</p>
-                
-                <!-- PULSANTI DISCORD E STORE -->
-                <div class="buttons-container">
-                    <a href="https://discord.gg/MUVEzHm5D" target="_blank" class="btn-discord">Entra nel Discord Ufficiale</a>
-                    
-                    <div class="btn-store-wrapper">
-                        <span class="btn-store" data-url="https://shynemc-store.tebex.store" title="Non ancora disponibile">🛒 Shop Ufficiale</span>
-                        <span class="store-notice">⚠️ Non ancora disponibile</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GRIGLIA MODALITÀ -->
-        <div class="grid">
-            <div class="modalita-card pvp-title">
-                <h3>BoxPvP</h3>
-                <p>Scendi nell'arena per combattimenti ravvicinati all'ultimo sangue. Potenzia i tuoi kit, domina i settori e scala la classifica dei migliori guerrieri.</p>
-            </div>
-            <div class="modalita-card sky-title">
-                <h3>SkyBlock</h3>
-                <p>Crea la tua isola fluttuante partendo da zero. Espandi le tue risorse, automatizza le farm e diventa l'economia più ricca del server.</p>
-            </div>
-            <div class="modalita-card smp-title">
-                <h3>Survival SMP</h3>
-                <p>Esplora un mondo persistente insieme agli altri membri della community. Costruisci liberamente, stringi alleanze e affronta la natura.</p>
-            </div>
-        </div>
-
-        <!-- REGOLE DI GIOCO -->
-        <div class="rules-card">
-            <h2>Regolamento Principale</h2>
-            <ul>
-                <li><strong>Rispetto Reciproco:</strong> Vietati insulti, tossicità e discriminazioni di ogni tipo in chat.</li>
-                <li><strong>Fair Play:</strong> È severamente proibito l'uso di hack, client modificati o exploit del gioco.</li>
-                <li><strong>Griefing controllato:</strong> Consulta le regole specifiche di ogni modalità prima di attaccare le basi altrui.</li>
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        function copyIp() {
-            const ipText = document.getElementById('server-ip').innerText;
-            navigator.clipboard.writeText(ipText).then(() => {
-                const btn = document.querySelector('.btn-copy');
-                const originalText = btn.innerText;
-                btn.innerText = 'Copiato!';
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Errore durante la copia dell\'IP: ', err);
-            });
-        }
-        function copyPort() {
-            const portText = document.getElementById('server-port').innerText;
-            navigator.clipboard.writeText(portText).then(() => {
-                const btn = document.querySelector('.btn-copy-port');
-                const originalText = btn.innerText;
-                btn.innerText = 'Copiato!';
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Errore durante la copia della porta: ', err);
-            });
-        }
-    </script>
-</body>
-</html>
